@@ -1,22 +1,17 @@
 const leitor = require("readline-sync")
 
-function main(){
-    let valor = leitor.questionInt(`insira um valor a ser lido: `)
-    let n200 = valor/200
-    valor = n200
-    let n100 = n200/100
-    valor = n100
-    let n50 = valor/50
-    valor = n50
-    let n20 = valor/20
-    valor = n20
-    let n10 = valor/10
-    valor = n10
-    let n5 = valor/5
-    valor = n5
-    let n2 = valor/2
-
-    console.log(`${n200} notas de R$200,00\n${n100} notas de R$100,00\n${n50} notas de R$50,00\n${n20} notas de R$20,00\n${n10} notas de R$10,00\n${n5} notas de R$5,00\n${n2} notas de R$2,00`);
+var a = leitor.questionFloat(`insira o valor: `)
+let cedula = [100.00, 50.00, 20.00, 10.00, 5.00, 2.00, 1.00, 0.50, 0.25, 0.10, 0.05, 0.01]
+let quantidade = 0
+console.log("NOTAS:")
+for (let i = 0; i < 6; i++) {
+    quantidade = parseInt(a / cedula[i])
+    console.log(`${quantidade} nota(s) de R$ ${cedula[i].toFixed(2)}`)
+    a = a % cedula[i]
 }
-
-main()
+console.log("MOEDAS:")
+for (let i = 6; i < cedula.length; i++) {
+    quantidade = parseInt(a / cedula[i])
+    console.log(`${quantidade} moeda(s) de R$ ${cedula[i].toFixed(2)}`)
+    a = a % cedula[i] + 0.00001
+    }
